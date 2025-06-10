@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router";
 
-import App from "./App.tsx";
-import "./index.css";
-import Home from "./Home.tsx";
-import AuthLayout from "./layouts/AuthLayout.tsx";
-import Login from "./Login.tsx";
+import App from "@/App.tsx";
+import "@/index.css";
+import Home from "@/Home.tsx";
+import AuthLayout from "@/layouts/AuthLayout.tsx";
+import Login from "@/Login.tsx";
 
 const router = createBrowserRouter([
     {

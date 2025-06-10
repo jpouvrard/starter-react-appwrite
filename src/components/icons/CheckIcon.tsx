@@ -1,4 +1,4 @@
-import type { IconProps } from "../../lib/types";
+import type { IconProps } from "@/lib/types";
 
 const CheckIcon: React.FC<IconProps> = ({ type = "default" }) => {
     const colorVariants = {

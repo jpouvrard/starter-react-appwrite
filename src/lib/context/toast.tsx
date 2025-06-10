@@ -7,7 +7,8 @@ import {
     useCallback,
     useState,
 } from "react";
-import { Toast } from "../../components/Toast";
+
+import { Toast } from "@/components/Toast";
 
 /**
  * Type for toast parameters including optional duration

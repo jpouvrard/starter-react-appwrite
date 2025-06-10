@@ -1,4 +1,4 @@
-import type { IconProps } from "../../lib/types";
+import type { IconProps } from "@/lib/types";
 
 const ExclamationIcon: React.FC<IconProps> = ({ type = "default" }) => {
     const colorVariants = {

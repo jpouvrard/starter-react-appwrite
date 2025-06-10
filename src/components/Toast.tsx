@@ -1,5 +1,5 @@
-import CheckIcon from "./icons/CheckIcon";
-import ExclamationIcon from "./icons/ExclamationIcon";
+import CheckIcon from "@/components/icons/CheckIcon";
+import ExclamationIcon from "@/components/icons/ExclamationIcon";
 
 type ToastProps = {
     title?: string;

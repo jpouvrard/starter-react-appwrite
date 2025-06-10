@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import Home from "../../Home";
-import { UserContext } from "../../lib/context/user";
+
+import Home from "@/Home";
+import { UserContext } from "@/lib/context/user";
 
 describe("Home", () => {
     it("should render the name of the application", () => {

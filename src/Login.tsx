@@ -1,6 +1,7 @@
 import { useActionState } from "react";
-import { useUser } from "./lib/context/user";
 import { redirect } from "react-router";
+
+import { useUser } from "@/lib/context/user";
 
 export default function Login() {
     const user = useUser();
