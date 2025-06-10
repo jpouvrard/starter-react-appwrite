@@ -40,6 +40,7 @@
 #
 #     - script: "hello.go"
 #       runner: go run
+colors: false
 
 pre-commit:
   parallel: true
@@ -49,6 +50,8 @@ pre-commit:
     type-check:
       glob: "*.{ts,tsx}"
       run: npx tsc --noEmit
+    test:
+      run: npx vitest run
 
 # Use this to validate commit messages
 commit-msg:
