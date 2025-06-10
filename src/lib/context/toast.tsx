@@ -9,16 +9,33 @@ import {
 } from "react";
 import { Toast } from "../../components/Toast";
 
+/**
+ * Type for toast parameters including optional duration
+ */
 type Params = ComponentProps<typeof Toast> & { duration?: number };
+
+/**
+ * Type for toast items including ID and timer
+ */
 type ToastItem = ComponentProps<typeof Toast> & { id: number; timer: ReturnType<typeof setTimeout> };
 
-const defaultPush = (_toast: Params) => {}; // Méthode de base que l'on mettra dans le contexte par défaut
+/**
+ * Default function for toast handling
+ */
+const defaultPush = (_toast: Params) => {};
 
+/**
+ * React Context for toast management
+ */
 const ToastContext = createContext({
     pushToastRef: { current: defaultPush },
 });
 
-// On entourera notre application de ce provider pour rendre le toasts fonctionnel
+/**
+ * Provider component that supplies the toast context
+ * @param children - The children components
+ * @returns The provider component with context and toasts
+ */
 export function ToastContextProvider({ children }: PropsWithChildren) {
     const pushToastRef = useRef(defaultPush);
 
@@ -30,6 +47,10 @@ export function ToastContextProvider({ children }: PropsWithChildren) {
     );
 }
 
+/**
+ * Custom hook to use toast notifications
+ * @returns A function to display a toast
+ */
 export function useToasts() {
     const { pushToastRef } = useContext(ToastContext);
     return {
@@ -42,20 +63,27 @@ export function useToasts() {
     };
 }
 
+/**
+ * Main component that manages toast notifications
+ * @returns The component that displays all active toasts
+ */
 export function Toasts() {
     const [toasts, setToasts] = useState([] as ToastItem[]);
-    // On modifie la méthode du contexte
     const { pushToastRef } = useContext(ToastContext);
+
+    // Function to add a new toast
     pushToastRef.current = ({ duration, ...props }) => {
-        // On génère un id pour différencier les messages
-        const id = Date.now();
-        // On sauvegarde le timer pour pouvoir l'annuler si le message est fermé
+        const id = Date.now(); // Generate unique ID based on timestamp
+
+        // Create timer to automatically remove the toast
         const timer = setTimeout(
             () => {
                 setToasts((v) => v.filter((t) => t.id !== id));
             },
-            (duration ?? 5) * 1000,
+            (duration ?? 5) * 1000, // Default duration of 5 seconds
         );
+
+        // Add the new toast to the list
         const toast = { ...props, id, timer };
         setToasts((v) => [...v, toast]);
     };
