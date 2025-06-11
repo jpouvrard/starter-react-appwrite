@@ -1,7 +1,10 @@
 import { useActionState } from "react";
 import { redirect } from "react-router";
 
+import { Input } from "@/components/ui/input";
 import { useUser } from "@/lib/context/user";
+import { Button } from "./components/ui/button";
+import { Label } from "./components/ui/label";
 
 export default function Login() {
     const user = useUser();
@@ -24,55 +27,38 @@ export default function Login() {
     return (
         <>
             <form className="space-y-6" action={submitAction}>
-                <div>
-                    <label htmlFor="email" className="block font-medium text-sm/6 text-white">
-                        Adresse email
-                    </label>
-                    <div className="mt-2">
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            required
-                            autoComplete="email"
-                            className="-outline-offset-1 focus:-outline-offset-2 block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:outline-secondary sm:text-sm/6"
-                            defaultValue={state?.data?.email}
-                        />
-                    </div>
+                <div className="grid w-full max-w-sm items-center gap-3">
+                    <Label htmlFor="email">Adresse email</Label>
+                    <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        defaultValue={state?.data?.email}
+                    />
                 </div>
-
-                <div>
+                <div className="grid w-full max-w-sm items-center gap-3">
                     <div className="flex items-center justify-between">
-                        <label htmlFor="password" className="block font-medium text-sm/6 text-white">
-                            Mot de passe
-                        </label>
+                        <Label htmlFor="password">Mot de passe</Label>
                         <div className="text-sm">
                             <a href="/" className="font-semibold text-secondary hover:text-secondary/80">
                                 Mot de passe oublié ?
                             </a>
                         </div>
                     </div>
-                    <div className="mt-2">
-                        <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            required
-                            autoComplete="current-password"
-                            className="-outline-offset-1 focus:-outline-offset-2 block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:outline-secondary sm:text-sm/6"
-                            defaultValue={state?.data?.password}
-                        />
-                    </div>
+                    <Input
+                        id="password"
+                        name="password"
+                        type="password"
+                        required
+                        autoComplete="current-password"
+                        defaultValue={state?.data?.password}
+                    />
                 </div>
-                <div>
-                    <button
-                        type="submit"
-                        className="flex w-full cursor-pointer justify-center rounded-md bg-secondary px-3 py-1.5 font-semibold text-sm/6 text-white shadow-xs hover:bg-secondary/80 focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-2"
-                        disabled={isPending}
-                    >
-                        {isPending ? "Connexion en cours..." : "Se connecter"}
-                    </button>
-                </div>
+                <Button type="submit" className="w-full" disabled={isPending} variant="secondary">
+                    {isPending ? "Connexion en cours..." : "Se connecter"}
+                </Button>
             </form>
 
             <p className="mt-10 text-center text-gray-400 text-sm/6">
