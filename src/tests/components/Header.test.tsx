@@ -1,30 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 
-import Home from "@/Home";
+import Header from "@/components/Header";
 import { UserContext } from "@/lib/context/user";
 
-describe("Home", () => {
-    it("should render the name of the application", () => {
-        render(
-            <MemoryRouter>
-                <UserContext
-                    value={{
-                        current: null,
-                        login: () => Promise.resolve(null),
-                        logout: () => Promise.resolve(),
-                        register: () => Promise.resolve(),
-                    }}
-                >
-                    <Home />
-                </UserContext>
-            </MemoryRouter>,
-        );
-        const heading = screen.getByRole("heading");
-        expect(heading).toBeInTheDocument();
-        expect(heading).toHaveTextContent("Starter React Appwrite");
-    });
-
+describe("Header", () => {
     it("should render the login button if user not logged", () => {
         render(
             <MemoryRouter>
@@ -36,7 +16,7 @@ describe("Home", () => {
                         register: () => Promise.resolve(),
                     }}
                 >
-                    <Home />
+                    <Header />
                 </UserContext>
             </MemoryRouter>,
         );
@@ -58,7 +38,7 @@ describe("Home", () => {
                         register: () => Promise.resolve(),
                     }}
                 >
-                    <Home />
+                    <Header />
                 </UserContext>
             </MemoryRouter>,
         );
