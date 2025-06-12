@@ -12,7 +12,7 @@ export default function Header() {
             {/* <h1>Starter React Appwrite</h1> */}
             {user?.current ? (
                 <>
-                    <Button onClick={() => user?.logout()} type="button">
+                    <Button onClick={() => user?.logout()} type="button" variant="outline">
                         Logout
                     </Button>
                 </>
