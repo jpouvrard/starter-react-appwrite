@@ -39,4 +39,5 @@ Testing library with vitest
    - Change the `name` and `author` properties in `package.json`
    - Clean up the `README.md`
 4. Copy `.env.example` to `.env` and fill in the values.
-5. You are good to go. Start the project with `npm run dev` and you will see an altered Vite starting screen with Vite, React, Biome and Tailwind styled using Tailwind classes.
+5. Install hooks `npx lefthook install`.
+6. You are good to go. Start the project with `npm run dev` and you will see an altered Vite starting screen with Vite, React, Biome and Tailwind styled using Tailwind classes.
