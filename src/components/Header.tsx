@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@/lib/context/user";
+import { useUser } from "@/lib/context/UserContext";
 
 export default function Header() {
     const user = useUser();

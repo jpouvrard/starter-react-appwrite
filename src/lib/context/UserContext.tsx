@@ -1,8 +1,8 @@
 import { ID, type Models } from "appwrite";
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { type ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 import { account } from "@/lib/appwrite";
-import { useToasts } from "@/lib/context/toast";
+import { useToasts } from "@/lib/context/ToastContext";
 
 interface UserContextType {
     current: Models.User<Models.Preferences> | Models.Session | null;
